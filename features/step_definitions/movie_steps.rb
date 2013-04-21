@@ -10,7 +10,8 @@ end
 #   on the same page
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
-  flunk "Unimplemented"
+  regexp = /#{e1}.*#{e2}/m
+  page.body.should =~ regexp
 end
 
 Then /^I should( not)? see movies: (.*)/ do |not_see, movie_list|
@@ -27,6 +28,17 @@ Then /^I should( not)? see movies: (.*)/ do |not_see, movie_list|
 		end
 	end
 end
+
+Then /^I sould see movies in order: (.*)/ do |movie_list|
+	movies=Array.new
+  movies=movie_list.split(/,\s*/x)
+  for i in (0..(movies.length() -2)) do
+  	steps %Q{
+						Then I should see "#{movies[i]}" before "#{movies[i+1]}"
+					}
+  end
+end
+
 
 
 # Make it easier to express checking or unchecking several boxes at once

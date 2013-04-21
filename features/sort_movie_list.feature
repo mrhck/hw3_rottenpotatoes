@@ -23,9 +23,9 @@ Background: movies have been added to database
 
 Scenario: sort movies alphabetically
   When I follow "Movie Title"
-  # your steps here
+  Then I sould see movies in order: 2001: A Space Odyssey, Aladdin, Amelie,Chicken Run,Chocolat,Raiders of the Lost Ark,The Help,The Incredibles,The Terminator,When Harry Met Sally
 
 Scenario: sort movies in increasing order of release date
   When I follow "Release Date"
-  # your steps here
+  Then I sould see movies in order: 2001: A Space Odyssey, Raiders of the Lost Ark,The Terminator,When Harry Met Sally,Aladdin,Chicken Run,Chocolat, Amelie,The Incredibles,The Help
 
